@@ -18,8 +18,10 @@
     "build:autoprefixer": "autoprefixer-cli css/style.css",
       
     "watch": "npm-run-all build -p watch:*",
-    "watch:sassprefixer": "onchange sass/* -- npm-run-all build:*  ",  
-    "watch:browsersync": "browser-sync --watch"
+    "watch:sassprefixer": "onchange -d 100 sass/style.scss -- npm-run-all watch-*",
+    "watch-sass": "node-sass --output-style expanded --source-map true -o css sass",
+    "watch-autoprefixer": "autoprefixer-cli -o css/style.prefixed.css css/style.css",
+    "watch:browsersync": "browser-sync start --server --files '*.css' '*.html'"
   },
   "keywords": [],
   "author": "",
